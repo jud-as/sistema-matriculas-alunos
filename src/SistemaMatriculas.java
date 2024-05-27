@@ -58,7 +58,9 @@ public class SistemaMatriculas {
         System.out.println("\nPeríodo: ");
         String periodo = input.next();
         Alunos aluno = new Alunos(nome, serie, periodo);
-        if (!arrayAlunosExcluidos.isEmpty()) aluno.setMatricula(orderAlunos(arrayAlunosExcluidos);
+        if (!arrayAlunosExcluidos.isEmpty()) {
+            aluno.setMatricula(orderAlunos(arrayAlunosExcluidos));
+        }
         arrayAlunos.add(aluno);
         System.out.println("\nAluno cadastrado com sucesso.");
         operacoes();
@@ -126,7 +128,7 @@ public class SistemaMatriculas {
 
     public static int orderAlunos(ArrayList<Alunos> arrayAlunos) {
         int matricula = 0;
-        ArrayList<int> matriculas = new ArrayList<int>();
+        ArrayList<Integer> matriculas = new ArrayList<Integer>();
         for (Alunos a : arrayAlunos) {
             matriculas.add(a.getMatricula());
         }
