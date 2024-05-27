@@ -1,6 +1,6 @@
 public class Alunos {
 
-    private static int contadorAlunos = 1;
+    public static int contadorAlunos = 1;
 
     //Definição de atributos:
     private String nome;
@@ -11,10 +11,8 @@ public class Alunos {
     //Construtor:
     public Alunos(String nome, String serie, String periodo) {
         this.nome = nome;
-        this.matricula = contadorAlunos;
         this.serie = serie;
         this.periodo = periodo;
-        contadorAlunos += 1;
     }
 
     //Getter e Setter:
@@ -50,8 +48,11 @@ public class Alunos {
         this.periodo = periodo;
     }
 
-
-
+    //Método toString:
+    @Override
+    public String toString() {
+        return "\nNome: " + nome + "\nMatrícula: " + matricula + "\nSérie: " + serie + "\nPeríodo: " + periodo;
+    }
 
 }
 
