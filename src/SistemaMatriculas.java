@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class SistemaMatriculas {
@@ -60,6 +59,9 @@ public class SistemaMatriculas {
         Alunos aluno = new Alunos(nome, serie, periodo);
         if (!arrayAlunosExcluidos.isEmpty()) {
             aluno.setMatricula(orderAlunos(arrayAlunosExcluidos));
+        }else{
+            aluno.setMatricula(Alunos.contadorAlunos);
+            Alunos.contadorAlunos++;
         }
         arrayAlunos.add(aluno);
         System.out.println("\nAluno cadastrado com sucesso.");
@@ -85,9 +87,10 @@ public class SistemaMatriculas {
             for (Alunos a : arrayAlunos) {
                 if (a.getMatricula() == matricula) {
                     aluno = a;
-                }else{
-                    System.out.println("\nAluno não encontrado.");
                 }
+            }
+            if (aluno == null) {
+                System.out.println("\nAluno não encontrado.");
             }
         } else {
             System.out.println("\nNão há alunos cadastrados.");
@@ -111,6 +114,8 @@ public class SistemaMatriculas {
             aluno.setPeriodo(periodo);
             System.out.println("\nAluno atualizado com sucesso.");
             operacoes();
+        }else{
+            operacoes();
         }
     }
 
@@ -127,13 +132,14 @@ public class SistemaMatriculas {
     }
 
     public static int orderAlunos(ArrayList<Alunos> arrayAlunos) {
-        int matricula = 0;
-        ArrayList<Integer> matriculas = new ArrayList<Integer>();
+        int matricula;
+        ArrayList<Integer> matriculas = new ArrayList<>();
         for (Alunos a : arrayAlunos) {
             matriculas.add(a.getMatricula());
         }
-        matricula = matriculas.getFirst();
-        matriculas.removeFirst();
+        matricula = matriculas.get(0);
+        matriculas.remove(0);
+        arrayAlunos.remove(0);
         return matricula;
     }
 
